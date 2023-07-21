@@ -16,8 +16,8 @@ namespace Samples
             if (number % 2 == 0 || number % 3 == 0)
                 return false;
 
-            // Use trial division to check for divisors up to the square root of 'number'
-            for (long i = 5; i * i <= number; i += 6)
+          
+            for (long i = 5; i <= number; i += 6)
             {
                 if (number % i == 0 || number % (i + 2) == 0)
                     return false;
