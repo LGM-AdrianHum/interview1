@@ -1,35 +1,39 @@
 ﻿using System;
 
-class Program
+namespace Samples
 {
-    static bool IsPrime(long number)
+    class Program
     {
-        if (number <= 1)
-            return false;
 
-        if (number == 2 || number == 3)
-            return true;
-
-        if (number % 2 == 0 || number % 3 == 0)
-            return false;
-
-        // Use trial division to check for divisors up to the square root of 'number'
-        for (long i = 5; i * i <= number; i += 6)
+        static bool IsPrime(long number)
         {
-            if (number % i == 0 || number % (i + 2) == 0)
+            if (number <= 1)
                 return false;
+
+            if (number == 2 || number == 3)
+                return true;
+
+            if (number % 2 == 0 || number % 3 == 0)
+                return false;
+
+            // Use trial division to check for divisors up to the square root of 'number'
+            for (long i = 5; i * i <= number; i += 6)
+            {
+                if (number % i == 0 || number % (i + 2) == 0)
+                    return false;
+            }
+
+            return true;
         }
 
-        return true;
-    }
+        static void Main()
+        {
+            Console.Write("Enter a number: ");
+            long num = long.Parse(Console.ReadLine());
 
-    static void Main()
-    {
-        Console.Write("Enter a number: ");
-        long num = long.Parse(Console.ReadLine());
+            bool isPrime = IsPrime(num);
 
-        bool isPrime = IsPrime(num);
-
-        Console.WriteLine($"{num} is {(isPrime ? "prime" : "not prime")}.");
+            Console.WriteLine($"{num} is {(isPrime ? "prime" : "not prime")}.");
+        }
     }
 }
